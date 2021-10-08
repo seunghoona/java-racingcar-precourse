@@ -4,6 +4,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CarTest {
@@ -18,5 +19,12 @@ class CarTest {
         assertThat(honux.getName()).isEqualTo("honux");
     }
 
+    @Test
+    void 자동차_이름이_5글자를_넘기면_예외처리() {
 
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+                    Car pobi = new Car("pobiasdf");
+                }).withMessageStartingWith("[ERROR]")
+                .withMessageContaining("이름은 5자 이내로 작성해야합니다.");
+    }
 }
