@@ -27,4 +27,20 @@ class CarTest {
                 }).withMessageStartingWith("[ERROR]")
                 .withMessageContaining("이름은 5자 이내로 작성해야합니다.");
     }
+
+    @Test
+    void 자동차가_4이상인경우_전진() {
+        Car pobi = new Car("pobi");
+        assertThat(pobi.play(5)).isEqualTo(CarStatus.MOVE);
+        assertThat(pobi.play(6)).isEqualTo(CarStatus.MOVE);
+        assertThat(pobi.getPosition()).isEqualTo(2);
+    }
+
+    @Test
+    void 자동차가_3이하인경우_정지() {
+        Car pobi = new Car("pobi");
+        assertThat(pobi.play(3)).isEqualTo(CarStatus.STOP);
+        assertThat(pobi.play(1)).isEqualTo(CarStatus.STOP);
+        assertThat(pobi.getPosition()).isEqualTo(0);
+    }
 }

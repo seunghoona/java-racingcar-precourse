@@ -1,11 +1,14 @@
 package racinggame;
 
 public class Car {
-    private String name;
     private static final int CAR_NAME_MAX_RANGE = 5;
+
+    private final String name;
+    private int position;
 
     public Car(String name) {
         validationCarNameRangeCheck(name);
+        this.position = 0;
         this.name = name;
     }
 
@@ -17,6 +20,23 @@ public class Car {
 
     private boolean isNotExceedCarName(String name) {
         return name.length() > CAR_NAME_MAX_RANGE;
+    }
+
+    public CarStatus play(int randomNumber) {
+        if (randomNumber >= 4) {
+            position++;
+            return CarStatus.MOVE;
+        }
+        return CarStatus.STOP;
+    }
+
+    @Override
+    public String toString() {
+        return name;
+    }
+
+    public int getPosition() {
+        return position;
     }
 
     public String getName() {
