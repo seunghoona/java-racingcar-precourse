@@ -1,14 +1,14 @@
 package racinggame;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import nextstep.utils.Randoms;
+
+import java.util.*;
 
 public class Cars {
-    private final List<Car> cars ;
+    private final Map<Car, List<CarStatus>> carMaps;
 
-    private Cars(List<Car> cars) {
-        this.cars = cars;
+    private Cars(Map<Car, List<CarStatus>> carMap) {
+        this.carMaps = carMap;
     }
 
     public static Cars of(String inputData) {
@@ -20,14 +20,41 @@ public class Cars {
     }
 
     private static Cars createCar(List<String> splitCars) {
-        List<Car> cars = new ArrayList<>();
-        for (String car : splitCars) {
-            cars.add(new Car(car));
+        Map<Car, List<CarStatus>> createCarMap = new LinkedHashMap<>();
+        for (String carName : splitCars) {
+            createCarMap.put(new Car(carName), new ArrayList<>());
         }
-        return new Cars(cars);
+        return new Cars(createCarMap);
     }
 
-    public int size(){
-        return cars.size();
+    public void play() {
+        for (Car car : getCreatedCars()) {
+            setMoveCarHistroy(car, moveCar(car));
+        }
+        OuputMessage.print(getCarResult());
+    }
+
+    public Map<Car, List<CarStatus>> getCarResult() {
+        return Collections.unmodifiableMap(carMaps);
+    }
+
+    private Set<Car> getCreatedCars() {
+        return carMaps.keySet();
+    }
+
+    private void setMoveCarHistroy(Car car, CarStatus carStatus) {
+        carMaps.get(car).add(carStatus);
+    }
+
+    private CarStatus moveCar(Car car) {
+        return car.play(takeRandomNumber());
+    }
+
+    private int takeRandomNumber() {
+        return Randoms.pickNumberInRange(1, 9);
+    }
+
+    public int size() {
+        return getCarResult().size();
     }
 }
