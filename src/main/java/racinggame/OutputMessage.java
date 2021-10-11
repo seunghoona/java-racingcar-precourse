@@ -13,7 +13,7 @@ public class OutputMessage {
             sb.append(getCarPositionHistory(carMaps, car));
             sb.append("\n");
         }
-        System.out.println(sb.toString());
+        System.out.printf(sb.toString());
     }
 
     private static String getCarPositionHistory(Map<Car, List<CarStatus>> carMaps, Car car) {
@@ -25,6 +25,6 @@ public class OutputMessage {
     }
 
     public static void print(String str) {
-        System.out.printf("최종우승자는 %s 입니다.", str);
+        System.out.printf("최종 우승자는 %s 입니다.", str);
     }
 }
