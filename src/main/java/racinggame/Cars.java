@@ -31,7 +31,7 @@ public class Cars {
         for (Car car : getCreatedCars()) {
             setMoveCarHistroy(car, moveCar(car));
         }
-        OuputMessage.print(getCarResult());
+        OutputMessage.print(getCarResult());
     }
 
     public Map<Car, List<CarStatus>> getCarResult() {
@@ -56,5 +56,21 @@ public class Cars {
 
     public int size() {
         return getCarResult().size();
+    }
+
+    public void winner() {
+        List<Car> cars = new ArrayList<>(carMaps.keySet());
+        final Car maxCar = Collections.max(cars);
+        List<String> winnerCar = new ArrayList<>();
+        for (Car car : cars) {
+            isExistMaxCarEqualsCar(maxCar, winnerCar, car);
+        }
+        OutputMessage.print(String.join(",", winnerCar));
+    }
+
+    private void isExistMaxCarEqualsCar(Car maxCar, List<String> winnerCar, Car car) {
+        if (car.equals(maxCar)) {
+            winnerCar.add(car.getName());
+        }
     }
 }

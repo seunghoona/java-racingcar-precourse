@@ -35,4 +35,21 @@ public class CarsTest {
             );
         }
     }
+
+    @Test
+    void 우승자를_확인() {
+        Cars cars = Cars.of("bmw,벤츠,아우디,테슬라,람보르기니");
+        try (MockedStatic<Randoms> randomsMockedStatic = Mockito.mockStatic(Randoms.class)) {
+            randomsMockedStatic.when(() -> Randoms.pickNumberInRange(1, 9)).thenReturn(-1, 3, 1, 9, 1);
+            cars.play();
+            final Collection<List<CarStatus>> carHistory = cars.getCarResult().values();
+            assertThat(carHistory).containsExactly(Arrays.asList(CarStatus.STOP),
+                    Arrays.asList(CarStatus.STOP),
+                    Arrays.asList(CarStatus.STOP),
+                    Arrays.asList(CarStatus.MOVING_FORWARD),
+                    Arrays.asList(CarStatus.STOP)
+            );
+        }
+        cars.winner();
+    }
 }

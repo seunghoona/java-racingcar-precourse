@@ -7,7 +7,7 @@ public class Circuit {
 
     private Cars cars;
 
-    public void createCar(String inputCar){
+    public void createCar(String inputCar) {
         cars = Cars.of(inputCar);
     }
 
@@ -16,6 +16,10 @@ public class Circuit {
             cars.play();
         }
         return cars.getCarResult();
+    }
+
+    public void whoWinner(){
+        cars.winner();
     }
 
 }

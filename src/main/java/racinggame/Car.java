@@ -1,6 +1,6 @@
 package racinggame;
 
-public class Car {
+public class Car implements Comparable<Car> {
     private static final int CAR_NAME_MAX_RANGE = 5;
 
     private final String name;
@@ -42,4 +42,22 @@ public class Car {
     public String getName() {
         return name;
     }
+
+    @Override
+    public int compareTo(Car o) {
+        if (this.getPosition() > o.getPosition()) {
+            return 1;
+        }
+        if (this.getPosition() < o.getPosition()) {
+            return -1;
+        }
+        return 0;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        Car car = (Car) o;
+        return position == car.position;
+    }
+
 }
