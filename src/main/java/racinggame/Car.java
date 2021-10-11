@@ -25,7 +25,7 @@ public class Car {
     public CarStatus play(int randomNumber) {
         if (randomNumber >= 4) {
             position++;
-            return CarStatus.MOVE;
+            return CarStatus.MOVING_FORWARD;
         }
         return CarStatus.STOP;
     }

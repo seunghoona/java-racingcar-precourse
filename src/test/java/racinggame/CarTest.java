@@ -1,11 +1,9 @@
 package racinggame;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-import static org.junit.jupiter.api.Assertions.*;
 
 class CarTest {
 
@@ -31,8 +29,8 @@ class CarTest {
     @Test
     void 자동차가_4이상인경우_전진() {
         Car pobi = new Car("pobi");
-        assertThat(pobi.play(5)).isEqualTo(CarStatus.MOVE);
-        assertThat(pobi.play(6)).isEqualTo(CarStatus.MOVE);
+        assertThat(pobi.play(5)).isEqualTo(CarStatus.MOVING_FORWARD);
+        assertThat(pobi.play(6)).isEqualTo(CarStatus.MOVING_FORWARD);
         assertThat(pobi.getPosition()).isEqualTo(2);
     }
 

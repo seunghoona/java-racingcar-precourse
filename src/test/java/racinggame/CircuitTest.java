@@ -22,8 +22,8 @@ public class CircuitTest {
             Circuit circuit = new Circuit();
             circuit.createCar(inputData);
             final Map<Car, List<CarStatus>> carHistory = circuit.start(2);
-            assertThat(carHistory.values()).containsExactly(Arrays.asList(CarStatus.STOP, CarStatus.MOVE),
-                    Arrays.asList(CarStatus.MOVE, CarStatus.MOVE),
+            assertThat(carHistory.values()).containsExactly(Arrays.asList(CarStatus.STOP, CarStatus.MOVING_FORWARD),
+                    Arrays.asList(CarStatus.MOVING_FORWARD, CarStatus.MOVING_FORWARD),
                     Arrays.asList(CarStatus.STOP, CarStatus.STOP)
             );
         }

@@ -29,8 +29,8 @@ public class CarsTest {
             final Collection<List<CarStatus>> carHistory = cars.getCarResult().values();
             assertThat(carHistory).containsExactly(Arrays.asList(CarStatus.STOP),
                     Arrays.asList(CarStatus.STOP),
-                    Arrays.asList(CarStatus.MOVE),
-                    Arrays.asList(CarStatus.MOVE),
+                    Arrays.asList(CarStatus.MOVING_FORWARD),
+                    Arrays.asList(CarStatus.MOVING_FORWARD),
                     Arrays.asList(CarStatus.STOP)
             );
         }
