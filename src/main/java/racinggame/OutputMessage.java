@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.Map;
 
 public class OutputMessage {
-    static private final StringBuilder sb = new StringBuilder();
 
     public static void print(Map<Car, List<CarStatus>> carMaps) {
+        StringBuilder sb = new StringBuilder();
         for (Car car : carMaps.keySet()) {
             sb.append(car.getName());
             sb.append(" : ");
