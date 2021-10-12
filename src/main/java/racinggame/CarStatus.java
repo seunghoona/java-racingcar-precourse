@@ -11,6 +11,10 @@ public enum CarStatus {
         this.marker = marker;
     }
 
+    public static boolean isMove(int randomNumber) {
+        return randomNumber >= MOVING_FORWARD.moveNumber;
+    }
+
     public String marker() {
         return marker;
     }

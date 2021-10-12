@@ -23,7 +23,7 @@ public class Car implements Comparable<Car> {
     }
 
     public CarStatus play(int randomNumber) {
-        if (randomNumber >= 4) {
+        if (CarStatus.isMove(randomNumber)) {
             position++;
             return CarStatus.MOVING_FORWARD;
         }
